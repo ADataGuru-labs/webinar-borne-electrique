@@ -1,0 +1,23 @@
+name: Build when cron is triggered
+run-name: PRODUCTION DEPLOY FROM BRANCH ${{ github.ref }}
+
+env:
+  ENVIRONMENT: production
+
+on:
+  schedule:
+    - cron: '0 5 * * *'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: GET IMAGE FROM DOCKER HUB
+        run: |
+          docker pull adataguru/webinar-python-borne-electrique:$ENVIRONMENT
+      - name: EXECUTE DOCKER CONTAINER TO SEND DATA
+        run: |
+          docker run --name send_data adataguru/webinar-python-borne-electrique:$ENVIRONMENT
