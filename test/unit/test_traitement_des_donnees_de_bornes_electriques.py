@@ -2,14 +2,19 @@ from unittest.mock import MagicMock, Mock
 
 import pandas as pd
 
-from src.normalisation.traitement_des_donnees_de_bornes_electriques import TraitementDesDonneesDeBornesElectriques, \
-    RecuperationDesDonneesBornesElectriques, EnregistrementDesDonneesBornesElectriques
+from src.normalisation.traitement_des_donnees_de_bornes_electriques import (
+    TraitementDesDonneesDeBornesElectriques,
+    EnregistrementDesDonneesBornesElectriques,
+)
+from src.normalisation.recuperation_donnees_open_data_paris import (
+    RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
+)
 
 
 class TestTraitementDesDonneesDeBornesElectriques:
     def test_doit_appeler_le_service_de_recuperation_des_donnees(self):
         # Given
-        service_recuperation_donnees = RecuperationDesDonneesBornesElectriques()
+        service_recuperation_donnees = RecuperationDesDonneesBornesElectriquesSurOpenDataParis()
         service_recuperation_donnees.recuperation_des_donnees_bornes_electriques = MagicMock()
 
         uc = TraitementDesDonneesDeBornesElectriques(service_recuperation_donnees, Mock())
@@ -22,7 +27,7 @@ class TestTraitementDesDonneesDeBornesElectriques:
 
     def test_doit_appeler_la_sauvegarde(self):
         df = pd.DataFrame({"id": ["1", "2"]})
-        service_recuperation_donnees = RecuperationDesDonneesBornesElectriques()
+        service_recuperation_donnees = RecuperationDesDonneesBornesElectriquesSurOpenDataParis()
         service_recuperation_donnees.recuperation_des_donnees_bornes_electriques = MagicMock(return_value=df)
 
         service_enregistrement_donnees = EnregistrementDesDonneesBornesElectriques()
@@ -35,4 +40,3 @@ class TestTraitementDesDonneesDeBornesElectriques:
 
         # Then
         service_enregistrement_donnees.enregistrement.assert_called_once_with(df)
-
