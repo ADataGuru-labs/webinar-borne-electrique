@@ -10,7 +10,7 @@ from src.streamlit.helper import (
 import cufflinks as cf
 
 cf
-chemin = "/Users/loic.caminale/Workspace/formation/dataguru/webinar-python-borne-electrique/src/streamlit/data.parquet"
+chemin = "s3://bornes-electriques-webinar/dev/bornes_electriques.parquet"
 
 st.title("Points de recharge pour véhicules électriques dans Paris")
 
