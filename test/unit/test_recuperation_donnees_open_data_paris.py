@@ -4,7 +4,7 @@ from typing import List
 from unittest.mock import MagicMock
 
 from src.normalisation.bornes_electriques import BornesElectriques
-from src.normalisation.recuperation_donnees_open_data_paris import (
+from src.normalisation.infra.api.recuperation_donnees_open_data_paris import (
     RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
 )
 

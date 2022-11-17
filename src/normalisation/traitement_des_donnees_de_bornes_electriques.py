@@ -3,13 +3,13 @@ from typing import List
 from src.normalisation.bornes_electriques import BornesElectriques
 from src.normalisation.enregistrement_bornes_elec import EnregistrementDesDonneesBornesElectriques
 from src.normalisation.recuperation_donnees_bornes_elec import RecuperationDesDonneesBornesElectriques
-from src.normalisation.recuperation_donnees_open_data_paris import (
+from src.normalisation.infra.api.recuperation_donnees_open_data_paris import (
     RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
 )
-from src.normalisation.stockage_objet import EnregistrementStockageObjet
+from src.normalisation.infra.stockage_objet.stockage_objet import EnregistrementStockageObjet
 
 
-class TraitementDesDonneesDeBornesElectriques:
+class RecuperationEtEnregistrementDesDonneesDeBornesElectriques:
     def __init__(
         self,
         service_recuperation: RecuperationDesDonneesBornesElectriques,
@@ -26,6 +26,6 @@ class TraitementDesDonneesDeBornesElectriques:
 
 
 if __name__ == "__main__":
-    TraitementDesDonneesDeBornesElectriques(
+    RecuperationEtEnregistrementDesDonneesDeBornesElectriques(
         RecuperationDesDonneesBornesElectriquesSurOpenDataParis(), EnregistrementStockageObjet()
     ).appliquer()
