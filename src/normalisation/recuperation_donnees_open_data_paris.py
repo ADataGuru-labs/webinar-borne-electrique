@@ -1,12 +1,9 @@
-import json
 from datetime import datetime
 from typing import Dict, List
-
 import requests
-from jsonschema import validate
 
 from src.normalisation.bornes_electriques import BornesElectriques
-from src.normalisation.traitement_des_donnees_de_bornes_electriques import RecuperationDesDonneesBornesElectriques
+from src.normalisation.recuperation_donnees_bornes_elec import RecuperationDesDonneesBornesElectriques
 
 
 class SchemaErrorOpenDataParis(Exception):
@@ -26,7 +23,7 @@ schema_dentree = {
     "required": ["id_pdc", "last_updated", "coordonneesxy", "adresse_station", "statut_pdc", "arrondissement"],
 }
 
-nbr_rows = "1"
+nbr_rows = "100"
 base_name = "opendata.paris.fr/api/records/1.0/search/"
 dataset_name = "belib-points-de-recharge-pour-vehicules-electriques-disponibilite-temps-reel&q"
 url = (
@@ -38,6 +35,7 @@ url = (
 class RecuperationDesDonneesBornesElectriquesSurOpenDataParis(RecuperationDesDonneesBornesElectriques):
     def recuperation_des_donnees_bornes_electriques(self) -> List[BornesElectriques]:
         resultat = self.appeler_lapi(url)
+        print("hello")
         return [
             BornesElectriques(
                 el["fields"].get("id_pdc"),

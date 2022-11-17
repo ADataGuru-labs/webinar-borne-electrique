@@ -1,17 +1,12 @@
-from abc import ABC, abstractmethod
+from typing import List
 
-import pandas as pd
-
-
-class RecuperationDesDonneesBornesElectriques(ABC):
-    @abstractmethod
-    def recuperation_des_donnees_bornes_electriques(self) -> pd.DataFrame:
-        pass
-
-
-class EnregistrementDesDonneesBornesElectriques:
-    def enregistrement(self, df: pd.DataFrame):
-        pass
+from src.normalisation.bornes_electriques import BornesElectriques
+from src.normalisation.enregistrement_bornes_elec import EnregistrementDesDonneesBornesElectriques
+from src.normalisation.recuperation_donnees_bornes_elec import RecuperationDesDonneesBornesElectriques
+from src.normalisation.recuperation_donnees_open_data_paris import (
+    RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
+)
+from src.normalisation.stockage_objet import EnregistrementStockageObjet
 
 
 class TraitementDesDonneesDeBornesElectriques:
@@ -24,5 +19,13 @@ class TraitementDesDonneesDeBornesElectriques:
         self.service_recuperation_de_donnees = service_recuperation
 
     def appliquer(self):
-        df = self.service_recuperation_de_donnees.recuperation_des_donnees_bornes_electriques()
-        self.service_enregistrement.enregistrement(df)
+        donnees_bornes_electriques: List[
+            BornesElectriques
+        ] = self.service_recuperation_de_donnees.recuperation_des_donnees_bornes_electriques()
+        self.service_enregistrement.enregistrement(donnees_bornes_electriques)
+
+
+if __name__ == "__main__":
+    TraitementDesDonneesDeBornesElectriques(
+        RecuperationDesDonneesBornesElectriquesSurOpenDataParis(), EnregistrementStockageObjet()
+    ).appliquer()

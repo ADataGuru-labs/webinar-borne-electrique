@@ -4,8 +4,8 @@ import pandas as pd
 
 from src.normalisation.traitement_des_donnees_de_bornes_electriques import (
     TraitementDesDonneesDeBornesElectriques,
-    EnregistrementDesDonneesBornesElectriques,
 )
+from src.normalisation.stockage_objet import EnregistrementStockageObjet
 from src.normalisation.recuperation_donnees_open_data_paris import (
     RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
 )
@@ -30,7 +30,7 @@ class TestTraitementDesDonneesDeBornesElectriques:
         service_recuperation_donnees = RecuperationDesDonneesBornesElectriquesSurOpenDataParis()
         service_recuperation_donnees.recuperation_des_donnees_bornes_electriques = MagicMock(return_value=df)
 
-        service_enregistrement_donnees = EnregistrementDesDonneesBornesElectriques()
+        service_enregistrement_donnees = EnregistrementStockageObjet()
         service_enregistrement_donnees.enregistrement = MagicMock()
 
         uc = TraitementDesDonneesDeBornesElectriques(service_recuperation_donnees, service_enregistrement_donnees)
