@@ -12,6 +12,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src .
 
 # EXECUTE HANDLER
-CMD [ "python", "./point_entree.py" ]
+CMD [ "python", "./normalisation/point_entree.py" ]
 
 
