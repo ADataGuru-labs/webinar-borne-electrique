@@ -39,6 +39,7 @@ def afficher_en_camembert_la_repartition_des_bornes_par_statut(donnee: pd.DataFr
 
 
 def afficher_en_bar_chart_la_repartition_des_bornes_par_statut_et_arrondissment(donnee: pd.DataFrame):
+    unique_statut = donnee["statut"].unique()
     nbr_de_bornes_par_arrondissement_et_statut = (
         donnee.groupby(by=["arrondissement", "statut"]).count()[["id"]].reset_index()
     )
@@ -46,7 +47,7 @@ def afficher_en_bar_chart_la_repartition_des_bornes_par_statut_et_arrondissment(
         index="arrondissement", columns=["statut"], values="id", fill_value=0
     ).reset_index()
     df_pivoted.set_index("arrondissement", inplace=True)
-    st.bar_chart(data=df_pivoted[["Disponible", "Occupé"]])
+    st.bar_chart(data=df_pivoted[unique_statut])
 
 chemin = "https://bornes-electriques-webinar.s3.eu-west-1.amazonaws.com/dev/bornes_electriques.parquet"
 
