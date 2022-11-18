@@ -59,7 +59,7 @@ def afficher_en_bar_chart_la_repartition_des_bornes_par_statut_et_arrondissment(
     st.bar_chart(data=df_pivoted[unique_statut])
 
 
-chemin = "https://bornes-electriques-webinar.s3.eu-west-1.amazonaws.com/prod/bornes_electriques.parquet"
+chemin = "https://bornes-electriques-webinar.s3.eu-west-1.amazonaws.com/dev/bornes_electriques.parquet"
 
 st.title("Points de recharge pour véhicules électriques dans Paris")
 
