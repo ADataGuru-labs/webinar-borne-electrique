@@ -33,11 +33,13 @@ class TestRecuperationOpenDataParis(unittest.TestCase):
             ],
         }
         service_recuperation.appeler_lapi = MagicMock(return_value=retour_api)
+
         # When
-        # Then
         donnees_bornes_electriques: List[
             BornesElectriques
         ] = service_recuperation.recuperation_des_donnees_bornes_electriques()
+
+        # Then
         assert donnees_bornes_electriques == [
             BornesElectriques(
                 "FR*V75*EHBSAE*PDA*04*2",

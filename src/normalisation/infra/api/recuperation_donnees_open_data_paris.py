@@ -6,7 +6,7 @@ from src.normalisation.bornes_electriques import BornesElectriques
 from src.normalisation.recuperation_donnees_bornes_elec import RecuperationDesDonneesBornesElectriques
 from src.normalisation.resources.configs import configs
 
-url = (
+open_data_url = (
     "https://%s?dataset=%s=&rows=%s&sort=code_insee_commune&facet=statut_pdc&facet=last_updated&facet=arrondissement"
     % (
         configs["open_data_api"].get("base_name"),
@@ -18,7 +18,7 @@ url = (
 
 class RecuperationDesDonneesBornesElectriquesSurOpenDataParis(RecuperationDesDonneesBornesElectriques):
     def recuperation_des_donnees_bornes_electriques(self) -> List[BornesElectriques]:
-        resultat = self.appeler_lapi(url)
+        donnees_non_normalisees = self.appeler_lapi(open_data_url)
         return [
             BornesElectriques(
                 el["fields"].get("id_pdc"),
@@ -29,7 +29,7 @@ class RecuperationDesDonneesBornesElectriquesSurOpenDataParis(RecuperationDesDon
                 el["fields"].get("statut_pdc"),
                 el["fields"].get("arrondissement"),
             )
-            for el in resultat["records"]
+            for el in donnees_non_normalisees["records"]
         ]
 
     def appeler_lapi(self, url: str) -> Dict:

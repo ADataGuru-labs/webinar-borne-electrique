@@ -9,7 +9,7 @@ from src.normalisation.infra.api.recuperation_donnees_open_data_paris import (
 from src.normalisation.infra.stockage_objet.stockage_objet import EnregistrementStockageObjet
 
 
-class RecuperationEtEnregistrementDesDonneesDeBornesElectriques:
+class RecuperationEtEnregistrementDesDonneesBornesElectriques:
     def __init__(
         self,
         service_recuperation: RecuperationDesDonneesBornesElectriques,
@@ -26,6 +26,6 @@ class RecuperationEtEnregistrementDesDonneesDeBornesElectriques:
 
 
 if __name__ == "__main__":
-    RecuperationEtEnregistrementDesDonneesDeBornesElectriques(
+    RecuperationEtEnregistrementDesDonneesBornesElectriques(
         RecuperationDesDonneesBornesElectriquesSurOpenDataParis(), EnregistrementStockageObjet()
     ).appliquer()
