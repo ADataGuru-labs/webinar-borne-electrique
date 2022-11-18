@@ -1,6 +1,6 @@
 import os
 
-env = os.environ.get("ENV", "test")
+env = os.environ.get("ENVIRONMENT", "test")
 configs = {
     "s3_path": ("s3://bornes-electriques-webinar/%s/bornes_electriques.parquet" % env),
     "open_data_api": {
