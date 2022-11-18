@@ -1,12 +1,12 @@
 import unittest
 
-from src.normalisation.infra.api.recuperation_donnees_open_data_paris import (
+from src.normalisation.infrastructure.api.recuperation_donnees_open_data_paris import (
     RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
 )
 
 
 class TestRecuperationOpenDataParis(unittest.TestCase):
-    def test_appeler_lapi_doit_retourner_un_resultat_sous_format_json_valide(self):
+    def test_appeler_lapi_doit_retourner_un_resultat_sous_format_dictionnaire_valide(self):
         # Given
         service_recuperation = RecuperationDesDonneesBornesElectriquesSurOpenDataParis()
         nbr_rows = "1"

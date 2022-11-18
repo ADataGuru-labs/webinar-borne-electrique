@@ -1,12 +1,12 @@
 from typing import List
 
-from src.normalisation.bornes_electriques import BornesElectriques
-from src.normalisation.enregistrement_bornes_elec import EnregistrementDesDonneesBornesElectriques
-from src.normalisation.recuperation_donnees_bornes_elec import RecuperationDesDonneesBornesElectriques
-from src.normalisation.infra.api.recuperation_donnees_open_data_paris import (
+from src.normalisation.objet_metier.borne_electrique import BorneElectrique
+from src.normalisation.contrat_interface.enregistrement_bornes_elec import EnregistrementDesDonneesBornesElectriques
+from src.normalisation.contrat_interface.recuperation_donnees_bornes_elec import RecuperationDesDonneesBornesElectriques
+from src.normalisation.infrastructure.api.recuperation_donnees_open_data_paris import (
     RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
 )
-from src.normalisation.infra.stockage_objet.stockage_objet import EnregistrementStockageObjet
+from src.normalisation.infrastructure.stockage_objet.aws_s3 import EnregistrementStockageObjet
 
 
 class RecuperationEtEnregistrementDesDonneesBornesElectriques:
@@ -20,12 +20,7 @@ class RecuperationEtEnregistrementDesDonneesBornesElectriques:
 
     def appliquer(self):
         donnees_bornes_electriques: List[
-            BornesElectriques
+            BorneElectrique
         ] = self.service_recuperation_de_donnees.recuperation_des_donnees_bornes_electriques()
         self.service_enregistrement.enregistrement(donnees_bornes_electriques)
 
-
-if __name__ == "__main__":
-    RecuperationEtEnregistrementDesDonneesBornesElectriques(
-        RecuperationDesDonneesBornesElectriquesSurOpenDataParis(), EnregistrementStockageObjet()
-    ).appliquer()

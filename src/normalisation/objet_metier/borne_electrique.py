@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 @dataclass
-class BornesElectriques:
+class BorneElectrique:
     id: str
     timestamp: datetime
     latitude: float

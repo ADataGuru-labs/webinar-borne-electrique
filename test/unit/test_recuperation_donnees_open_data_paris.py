@@ -3,8 +3,8 @@ from datetime import datetime
 from typing import List
 from unittest.mock import MagicMock
 
-from src.normalisation.bornes_electriques import BornesElectriques
-from src.normalisation.infra.api.recuperation_donnees_open_data_paris import (
+from src.normalisation.objet_metier.borne_electrique import BorneElectrique
+from src.normalisation.infrastructure.api.recuperation_donnees_open_data_paris import (
     RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
 )
 
@@ -36,12 +36,12 @@ class TestRecuperationOpenDataParis(unittest.TestCase):
 
         # When
         donnees_bornes_electriques: List[
-            BornesElectriques
+            BorneElectrique
         ] = service_recuperation.recuperation_des_donnees_bornes_electriques()
 
         # Then
         assert donnees_bornes_electriques == [
-            BornesElectriques(
+            BorneElectrique(
                 "FR*V75*EHBSAE*PDA*04*2",
                 datetime.strptime("2022-11-17T03:30:03+00:00", "%Y-%m-%dT%H:%M:%S%z"),
                 48.846973,
