@@ -3,6 +3,8 @@ run-name: PRODUCTION DEPLOY FROM BRANCH ${{ github.ref }}
 
 env:
   ENVIRONMENT: production
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
 
 on:
   schedule:
@@ -20,4 +22,4 @@ jobs:
           docker pull adataguru/webinar-python-borne-electrique:$ENVIRONMENT
       - name: EXECUTE DOCKER CONTAINER TO SEND DATA
         run: |
-          docker run --name send_data adataguru/webinar-python-borne-electrique:$ENVIRONMENT
+          docker run --env AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --env AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --name send_data adataguru/webinar-python-borne-electrique:$ENVIRONMENT
