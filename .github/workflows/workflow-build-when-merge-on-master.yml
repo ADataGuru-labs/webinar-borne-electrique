@@ -67,4 +67,4 @@ jobs:
           docker pull adataguru/webinar-python-borne-electrique:$ENVIRONMENT
       - name: EXECUTE DOCKER CONTAINER TO SEND DATA
         run: |
-          docker run --name send_data adataguru/webinar-python-borne-electrique:$ENVIRONMENT
+          docker run --env AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --env AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --name send_data adataguru/webinar-python-borne-electrique:$ENVIRONMENT
