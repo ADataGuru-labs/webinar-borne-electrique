@@ -4,6 +4,7 @@ import cufflinks as cf
 
 cf
 
+
 @st.cache
 def get_les_donnees_depuis(chemin: str):
     return pd.read_parquet(chemin)
@@ -18,7 +19,8 @@ def gestion_et_affichage_les_donnees_brutes(donnee: pd.DataFrame):
 def afficher_les_bornes_sur_une_carte(donnee: pd.DataFrame):
     status_uniques = donnee["statut"].unique()
     statut_selectionne = st.selectbox(
-        "Veuillez sélectionner le statut pour filtrer les bornes de recharges", status_uniques
+        "Veuillez sélectionner le statut pour filtrer les bornes de recharges",
+        status_uniques,
     )
     st.write("Vous avez séléctionné", statut_selectionne)
     st.map(donnee[donnee["statut"] == statut_selectionne])
@@ -26,7 +28,12 @@ def afficher_les_bornes_sur_une_carte(donnee: pd.DataFrame):
 
 def afficher_en_camembert_la_repartition_des_bornes_par_statut(donnee: pd.DataFrame):
     statut_col = "statut"
-    recharge_count = donnee.groupby(by=statut_col).count()[["id"]].rename(columns={"id": "count"}).reset_index()
+    recharge_count = (
+        donnee.groupby(by=statut_col)
+        .count()[["id"]]
+        .rename(columns={"id": "count"})
+        .reset_index()
+    )
     camembert_fig = recharge_count.iplot(
         kind="pie",
         labels=statut_col,
@@ -38,7 +45,9 @@ def afficher_en_camembert_la_repartition_des_bornes_par_statut(donnee: pd.DataFr
     st.write(camembert_fig)
 
 
-def afficher_en_bar_chart_la_repartition_des_bornes_par_statut_et_arrondissment(donnee: pd.DataFrame):
+def afficher_en_bar_chart_la_repartition_des_bornes_par_statut_et_arrondissment(
+    donnee: pd.DataFrame,
+):
     unique_statut = donnee["statut"].unique()
     nbr_de_bornes_par_arrondissement_et_statut = (
         donnee.groupby(by=["arrondissement", "statut"]).count()[["id"]].reset_index()
@@ -48,6 +57,7 @@ def afficher_en_bar_chart_la_repartition_des_bornes_par_statut_et_arrondissment(
     ).reset_index()
     df_pivoted.set_index("arrondissement", inplace=True)
     st.bar_chart(data=df_pivoted[unique_statut])
+
 
 chemin = "https://bornes-electriques-webinar.s3.eu-west-1.amazonaws.com/dev/bornes_electriques.parquet"
 
@@ -65,6 +75,10 @@ st.subheader("Répartition des Points de recharge du nouveau réseau Belib par s
 
 afficher_en_camembert_la_repartition_des_bornes_par_statut(df_bornes_elec)
 
-st.subheader("Répartition des Points de recharge du nouveau réseau Belib' par statut et par arrondissement")
+st.subheader(
+    "Répartition des Points de recharge du nouveau réseau Belib' par statut et par arrondissement"
+)
 
-afficher_en_bar_chart_la_repartition_des_bornes_par_statut_et_arrondissment(df_bornes_elec)
+afficher_en_bar_chart_la_repartition_des_bornes_par_statut_et_arrondissment(
+    df_bornes_elec
+)
