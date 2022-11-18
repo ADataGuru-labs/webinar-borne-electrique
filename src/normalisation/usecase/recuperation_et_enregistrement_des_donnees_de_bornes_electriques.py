@@ -23,4 +23,3 @@ class RecuperationEtEnregistrementDesDonneesBornesElectriques:
             BorneElectrique
         ] = self.service_recuperation_de_donnees.recuperation_des_donnees_bornes_electriques()
         self.service_enregistrement.enregistrement(donnees_bornes_electriques)
-
