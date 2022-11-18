@@ -48,7 +48,7 @@ def afficher_en_bar_chart_la_repartition_des_bornes_par_statut_et_arrondissment(
     df_pivoted.set_index("arrondissement", inplace=True)
     st.bar_chart(data=df_pivoted[["Disponible", "Occupé"]])
 
-chemin = "s3://bornes-electriques-webinar/dev/bornes_electriques.parquet"
+chemin = "https://bornes-electriques-webinar.s3.eu-west-1.amazonaws.com/dev/bornes_electriques.parquet"
 
 st.title("Points de recharge pour véhicules électriques dans Paris")
 
