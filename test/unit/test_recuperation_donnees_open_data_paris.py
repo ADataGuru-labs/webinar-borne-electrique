@@ -27,7 +27,10 @@ class TestRecuperationOpenDataParis(unittest.TestCase):
                         "id_pdc": "FR*V75*EHBSAE*PDA*04*2",
                         "coordonneesxy": [48.846973, 2.2558389],
                     },
-                    "geometry": {"type": "Point", "coordinates": [2.2558389, 48.846973]},
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [2.2558389, 48.846973],
+                    },
                     "record_timestamp": "2022-11-17T03:30:04.489Z",
                 }
             ],

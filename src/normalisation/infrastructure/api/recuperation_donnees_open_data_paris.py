@@ -3,7 +3,9 @@ from typing import Dict, List
 import requests
 
 from src.normalisation.objet_metier.borne_electrique import BorneElectrique
-from src.normalisation.contrat_interface.recuperation_donnees_bornes_elec import RecuperationDesDonneesBornesElectriques
+from src.normalisation.contrat_interface.recuperation_donnees_bornes_elec import (
+    RecuperationDesDonneesBornesElectriques,
+)
 from src.normalisation.resources.configs import configs
 
 open_data_url = (
@@ -16,13 +18,17 @@ open_data_url = (
 )
 
 
-class RecuperationDesDonneesBornesElectriquesSurOpenDataParis(RecuperationDesDonneesBornesElectriques):
+class RecuperationDesDonneesBornesElectriquesSurOpenDataParis(
+    RecuperationDesDonneesBornesElectriques
+):
     def recuperation_des_donnees_bornes_electriques(self) -> List[BorneElectrique]:
         donnees_non_normalisees = self.appeler_lapi(open_data_url)
         return [
             BorneElectrique(
                 el["fields"].get("id_pdc"),
-                datetime.strptime(el["fields"].get("last_updated"), "%Y-%m-%dT%H:%M:%S%z"),
+                datetime.strptime(
+                    el["fields"].get("last_updated"), "%Y-%m-%dT%H:%M:%S%z"
+                ),
                 el["fields"].get("coordonneesxy")[0],
                 el["fields"].get("coordonneesxy")[1],
                 el["fields"].get("adresse_station"),

@@ -3,7 +3,9 @@ from typing import List
 import pandas as pd
 
 from src.normalisation.objet_metier.borne_electrique import BorneElectrique
-from src.normalisation.contrat_interface.enregistrement_bornes_elec import EnregistrementDesDonneesBornesElectriques
+from src.normalisation.contrat_interface.enregistrement_bornes_elec import (
+    EnregistrementDesDonneesBornesElectriques,
+)
 from src.normalisation.resources.configs import configs
 
 
