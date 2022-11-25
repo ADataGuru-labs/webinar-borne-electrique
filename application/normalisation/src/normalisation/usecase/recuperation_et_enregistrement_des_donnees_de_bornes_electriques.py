@@ -1,17 +1,11 @@
 from typing import List
 
-from src.normalisation.objet_metier.borne_electrique import BorneElectrique
-from src.normalisation.contrat_interface.enregistrement_bornes_elec import (
+from application.normalisation.src.normalisation.objet_metier.borne_electrique import BorneElectrique
+from application.normalisation.src.normalisation.contrat_interface.enregistrement_bornes_elec import (
     EnregistrementDesDonneesBornesElectriques,
 )
-from src.normalisation.contrat_interface.recuperation_donnees_bornes_elec import (
+from application.normalisation.src.normalisation.contrat_interface.recuperation_donnees_bornes_elec import (
     RecuperationDesDonneesBornesElectriques,
-)
-from src.normalisation.infrastructure.api.recuperation_donnees_open_data_paris import (
-    RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
-)
-from src.normalisation.infrastructure.stockage_objet.aws_s3 import (
-    EnregistrementStockageObjet,
 )
 
 

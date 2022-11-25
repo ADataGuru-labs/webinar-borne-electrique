@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from src.normalisation.objet_metier.borne_electrique import BorneElectrique
+from application.normalisation.src.normalisation.objet_metier.borne_electrique import BorneElectrique
 
 
 class EnregistrementDesDonneesBornesElectriques(ABC):

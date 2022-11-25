@@ -3,8 +3,8 @@ from datetime import datetime
 from typing import List
 from unittest.mock import MagicMock
 
-from src.normalisation.objet_metier.borne_electrique import BorneElectrique
-from src.normalisation.infrastructure.api.recuperation_donnees_open_data_paris import (
+from application.normalisation.src.normalisation.objet_metier.borne_electrique import BorneElectrique
+from application.normalisation.src.normalisation.infrastructure.api.recuperation_donnees_open_data_paris import (
     RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
 )
 
