@@ -2,11 +2,11 @@ from datetime import datetime
 from typing import Dict, List
 import requests
 
-from application.normalisation.src.normalisation.objet_metier.borne_electrique import BorneElectrique
-from application.normalisation.src.normalisation.contrat_interface.recuperation_donnees_bornes_elec import (
+from application.normalisation.src.objet_metier.borne_electrique import BorneElectrique
+from application.normalisation.src.contrat_interface.recuperation_donnees_bornes_elec import (
     RecuperationDesDonneesBornesElectriques,
 )
-from application.normalisation.src.normalisation.resources.configs import configs
+from application.normalisation.src.resources.configs import configs
 
 open_data_url = (
     "https://%s?dataset=%s=&rows=%s&sort=code_insee_commune&facet=statut_pdc&facet=last_updated&facet=arrondissement"

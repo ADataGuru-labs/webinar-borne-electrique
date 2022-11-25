@@ -1,0 +1,19 @@
+---
+- name: Setup de la normalisation
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Mise a jour des caches repositories et installation "python3-pip" package
+      apt:
+        name: python3-pip
+        update_cache: yes
+
+    - name: Copier le code python
+      synchronize:
+          src: "{{ playbook_dir }}/../../application"
+          dest: /home/ubuntu
+
+    - name: Installation des dépendances python
+      pip:
+        requirements: /home/ubuntu/application/requirements.txt

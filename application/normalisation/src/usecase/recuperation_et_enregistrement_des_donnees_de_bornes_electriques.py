@@ -1,10 +1,10 @@
 from typing import List
 
-from application.normalisation.src.normalisation.objet_metier.borne_electrique import BorneElectrique
-from application.normalisation.src.normalisation.contrat_interface.enregistrement_bornes_elec import (
+from application.normalisation.src.objet_metier.borne_electrique import BorneElectrique
+from application.normalisation.src.contrat_interface.enregistrement_bornes_elec import (
     EnregistrementDesDonneesBornesElectriques,
 )
-from application.normalisation.src.normalisation.contrat_interface.recuperation_donnees_bornes_elec import (
+from application.normalisation.src.contrat_interface.recuperation_donnees_bornes_elec import (
     RecuperationDesDonneesBornesElectriques,
 )
 
