@@ -3,10 +3,10 @@ from datetime import datetime
 from typing import List
 from unittest.mock import MagicMock
 
-from application.normalisation.src.objet_metier import BorneElectrique
 from application.normalisation.src.infrastructure.api.recuperation_donnees_open_data_paris import (
     RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
 )
+from application.normalisation.src.objet_metier.borne_electrique import BorneElectrique
 
 
 class TestRecuperationOpenDataParis(unittest.TestCase):
