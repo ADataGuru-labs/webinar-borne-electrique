@@ -13,6 +13,7 @@ from application.normalisation.src.usecase.recuperation_et_enregistrement_des_do
     RecuperationEtEnregistrementDesDonneesBornesElectriques,
 )
 
+
 @app.route("/")
 def recuperation_et_enregistrement():
     RecuperationEtEnregistrementDesDonneesBornesElectriques(
@@ -20,4 +21,3 @@ def recuperation_et_enregistrement():
         EnregistrementStockageObjet(),
     ).appliquer()
     return "RecuperationEtEnregistrementDesDonneesBornesElectriques appliqué !"
-

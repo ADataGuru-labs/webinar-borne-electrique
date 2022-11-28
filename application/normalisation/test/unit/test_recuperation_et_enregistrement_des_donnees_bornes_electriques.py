@@ -2,7 +2,9 @@ from unittest.mock import MagicMock, Mock
 
 import pandas as pd
 
-from application.normalisation.src.infrastructure.stockage_objet.aws_s3 import EnregistrementStockageObjet
+from application.normalisation.src.infrastructure.stockage_objet.aws_s3 import (
+    EnregistrementStockageObjet,
+)
 from application.normalisation.src.usecase.recuperation_et_enregistrement_des_donnees_de_bornes_electriques import (
     RecuperationEtEnregistrementDesDonneesBornesElectriques,
 )
