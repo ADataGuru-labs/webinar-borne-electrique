@@ -1,7 +1,7 @@
 resource "aws_iam_role" "normalisation_borne_electrique" {
   name = "normalisation_borne_electrique"
 
-    assume_role_policy = <<EOF
+  assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
