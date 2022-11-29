@@ -1,12 +1,7 @@
 variable "region" {
   description = "The aws region the resources will be build"
   type        = string
-}
-
-variable "ami_id" {
-  description = "id of an ami by default it's ubuntu 18.04"
-  type        = string
-  default     = "ami-03ef731cc103c9f09"
+  default = "eu-west-1"
 }
 
 variable "instance_type" {
@@ -17,6 +12,12 @@ variable "instance_type" {
 
 variable "tag_name" {
   description = "Aws tag name permit to search an instance by tag"
+  type        = string
+  default     = "instance-borne-electrique"
+}
+
+variable "ami_id" {
+  description = "id of an ami by default it's ubuntu 18.04"
   type        = string
 }
 
