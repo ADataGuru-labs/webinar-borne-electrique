@@ -1,6 +1,6 @@
 import unittest
 
-from src.normalisation.infrastructure.api.recuperation_donnees_open_data_paris import (
+from application.normalisation.src.infrastructure.api.recuperation_donnees_open_data_paris import (
     RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
 )
 

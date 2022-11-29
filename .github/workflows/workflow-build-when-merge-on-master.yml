@@ -27,7 +27,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: INSTALL DEPENDENCIES
         run: |
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f application/requirements.txt ]; then pip install -r application/requirements.txt; fi
           pip install -e .
       - name: CHECK SYNTAX
         run: |
@@ -35,7 +35,7 @@ jobs:
           black --check .
       - name: TEST
         run: |
-          pytest test
+          pytest application/normalisation/test
 
   package:
     runs-on: ubuntu-latest

@@ -2,13 +2,13 @@ from unittest.mock import MagicMock, Mock
 
 import pandas as pd
 
-from src.normalisation.usecase.recuperation_et_enregistrement_des_donnees_de_bornes_electriques import (
-    RecuperationEtEnregistrementDesDonneesBornesElectriques,
-)
-from src.normalisation.infrastructure.stockage_objet.aws_s3 import (
+from application.normalisation.src.infrastructure.stockage_objet.aws_s3 import (
     EnregistrementStockageObjet,
 )
-from src.normalisation.infrastructure.api.recuperation_donnees_open_data_paris import (
+from application.normalisation.src.usecase.recuperation_et_enregistrement_des_donnees_de_bornes_electriques import (
+    RecuperationEtEnregistrementDesDonneesBornesElectriques,
+)
+from application.normalisation.src.infrastructure.api.recuperation_donnees_open_data_paris import (
     RecuperationDesDonneesBornesElectriquesSurOpenDataParis,
 )
 
