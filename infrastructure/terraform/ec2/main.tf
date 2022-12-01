@@ -44,12 +44,10 @@ resource "aws_instance" "nomalisation_borne_electrique" {
   instance_type        = "t2.micro"
   iam_instance_profile = aws_iam_instance_profile.normalisation_borne_electrique.name
 
-  key_name = "admin"
+  key_name = aws_key_pair.admin.key_name
 
   tags = {
     Name = var.tag_name
   }
-  depends_on = [aws_key_pair.admin]
+
 }
-
-

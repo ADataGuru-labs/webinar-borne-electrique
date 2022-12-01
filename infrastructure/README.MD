@@ -13,11 +13,8 @@
         - pip install -r application/requirements.txt
         - pip install -e .
         - python3 -m flask  --app application/normalisation/src/point_entree.py run --host=0.0.0.0
-    
-    - Lancer le call @ip:5000 
-    - Changer le security group en ajoutant une rule 
-    - AJouter l'instance profile
-    - Lancer le call @ip:5000 
+
+
   
 - [ ] Automatiser l'installation avec ansible
    - Créer un playbook qui installe python et l'application dans la machine
@@ -45,7 +42,7 @@
 
 
 # Commands
- - chmod 400 sshKey.pem
+ - chmod 400 sshKey.pem 
  - ssh -i sshKey.pem ubuntu@ip-public
  - ssh-keygen
  - terraform apply --var-file=example.tfvars
