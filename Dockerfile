@@ -10,9 +10,9 @@ RUN pip install --no-cache-dir -r requirements.txt \
     && pip install -e .
 
 # COPY SRC TO WORKDIR
-COPY application/normalisation/src ./src
+COPY application/normalisation/src ./application/normalisation/src
 
 # EXECUTE HANDLER
-CMD [ "python", "./src/normalisation/point_entree.py" ]
+CMD [ "python", "./application/normalisation/src/point_entree.py" ]
 
 
