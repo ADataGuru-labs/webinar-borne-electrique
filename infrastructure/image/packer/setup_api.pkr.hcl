@@ -42,7 +42,7 @@ build {
     "amazon-ebs.ubuntu"
   ]
    provisioner "ansible" {
-      playbook_file = "ansible/setup_api.yml"
+      playbook_file = "infrastructure/ansible/setup_api.yml"
       ansible_env_vars =  [
         "ANSIBLE_HOST_KEY_CHECKING=False"
       ]
