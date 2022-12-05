@@ -1,0 +1,1 @@
+python3 -m flask  --app application/normalisation/src/point_entree.py run --host=0.0.0.0

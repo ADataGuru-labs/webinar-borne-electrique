@@ -3,18 +3,17 @@ run-name: BUILDING BRANCH ${{ github.ref }}
 
 
 env:
-  ENVIRONMENT: production
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
 
 on:
   push:
-    branches-ignore:
+    branches:
       - 'main'
 
 jobs:
   package:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -25,6 +24,17 @@ jobs:
           update: true
           install: packer
       - run: |
-          packer --version
-          export PACKER_LOG=1
           packer build infrastructure/image/packer/setup_api.pkr.hcl
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: package
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2
+      - run: |
+           cd infrastructure/terraform/ec2 && terraform init
+      - run: |
+           cd infrastructure/terraform/ec2 && terraform apply -auto-approve

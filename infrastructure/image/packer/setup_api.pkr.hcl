@@ -21,7 +21,7 @@ data "amazon-ami" "ubuntu_image" {
 
 
 source "amazon-ebs" "ubuntu" {
-  ami_name             = "packer_AWS {{timestamp}}"
+  ami_name             = "packer_aws_latest"
   instance_type        = "t2.micro"
   region               = var.region
   source_ami           = data.amazon-ami.ubuntu_image.id
@@ -46,6 +46,7 @@ build {
       ansible_env_vars =  [
         "ANSIBLE_HOST_KEY_CHECKING=False"
       ]
+      use_proxy= false
       user= var.user
     }
 }
