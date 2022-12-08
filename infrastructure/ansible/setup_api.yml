@@ -1,6 +1,6 @@
 ---
 - name: Playbook setup de la normalisation
-  hosts: all
+  hosts: default
   remote_user: ubuntu
   become: true
 
